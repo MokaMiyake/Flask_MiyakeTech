@@ -7,7 +7,7 @@ def show_entries():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
+    if request.method == 'POST': # 正しく送信
         if request.form['username'] != app.config['USERNAME']:
             print('ユーザ名が異なります')
         elif request.form['password'] != app.config['PASSWORD']:
