@@ -14,10 +14,15 @@ def calc():
     print("計算実行")
 
     if not request.form["salary"]:
-        print("数値を入力してください")
+        flash("給与が未入力です。入力してください。")
+    elif len(request.form["salary"]) > 10:
+        print("給与には9,999,999,999までが入力可能です。")
+    elif request.form["salary"][0] == "-":
+        print("給与にはマイナスの値は入力できません")
     else:
         input_salary = request.form["salary"]
 
         text_salary = calc_salary(input_salary)
         return render_template("output.html",text_salary=text_salary)
+    
     return redirect(url_for("show_entries"))
