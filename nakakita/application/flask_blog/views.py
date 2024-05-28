@@ -11,13 +11,13 @@ def login():
     if request.method=='POST':
         if request.form['username']!=app.config['USERNAME']:
             print('ユーザ名が異なります')
-        elif request.form['password']!=app.config['PPASSWORD']:
+        elif request.form['password']!=app.config['PASSWORD']:
             print('パスワードが異なります')
         else:
             return redirect('/')
     return render_template('login.html')
 
 @app.route('/logout')
-def ogout():
+def logout():
     return redirect('/')
 
