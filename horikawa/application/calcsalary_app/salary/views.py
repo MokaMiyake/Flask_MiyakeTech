@@ -16,9 +16,9 @@ def calc():
     if not request.form["salary"]:
         flash("給与が未入力です。入力してください。")
     elif len(request.form["salary"]) > 10:
-        print("給与には9,999,999,999までが入力可能です。")
+        flash("給与には9,999,999,999までが入力可能です。")
     elif request.form["salary"][0] == "-":
-        print("給与にはマイナスの値は入力できません")
+        flash("給与にはマイナスの値は入力できません")
     else:
         input_salary = request.form["salary"]
 
