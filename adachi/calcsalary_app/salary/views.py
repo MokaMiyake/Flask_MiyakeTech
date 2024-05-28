@@ -11,8 +11,18 @@ def show_salary():
 def input():
     income = 0
     tax = 0
-    # if request.method == 'POST': # 正しく送信
-    suuzi = int(request.form['money'])
+    if request.method == 'POST': # 正しく送信
+        suuzi = int(request.form['money'])
+        tax = calc(suuzi)
+        income = suuzi - tax
+        # flash('計算結果を出力')
+        # return redirect(url_for('show_salary'))
+    return render_template('output.html',suuzi=suuzi,income=income,tax=tax)
+
+
+
+# 税金の計算
+def calc(suuzi):
     tax = 0 #　税
     income = 0 #　手取り
 
@@ -23,8 +33,8 @@ def input():
 
     tax = Decimal(str(tax)).quantize(Decimal("0"),rounding=ROUND_HALF_UP)
     income = suuzi - tax
+
+    # ターミナル上での確認用
     print("支給額:"+str(income)+"、税額:"+str(tax),end="")
 
-    # flash('計算結果を出力')
-        # return redirect(url_for('show_salary'))
-    return render_template('output.html',suuzi=suuzi,income=income,tax=tax)
+    return tax
