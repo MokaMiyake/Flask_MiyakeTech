@@ -11,11 +11,16 @@ def show_salary():
 def input():
     income = 0
     tax = 0
+    suuzi = 0
+    
     if request.method == 'POST': # 正しく送信
-        suuzi = int(request.form['money'])
-        tax = calc(suuzi)
-        income = suuzi - tax
-        # flash('計算結果を出力')
+        if validate(request.form['money']) == 0:
+            return redirect(url_for('show_salary'))
+        else:
+            suuzi = int(request.form['money'])
+            tax = calc(suuzi)
+            income = suuzi - tax
+            flash('計算結果を出力')
         # return redirect(url_for('show_salary'))
     return render_template('output.html',suuzi=suuzi,income=income,tax=tax)
 
@@ -38,3 +43,21 @@ def calc(suuzi):
     print("支給額:"+str(income)+"、税額:"+str(tax),end="")
 
     return tax
+
+def validate(num):
+        '''
+        - 未入力 禁止
+        - 11桁以上 禁止
+        - 「-」 禁止
+        '''
+        if num == '':
+            flash('値を入力してください。')
+            return 0
+        
+        if len(num) > 10:
+            flash('給与には最大9,999,999,999まで入力可能です。')
+            return 0
+        
+        if '-' in num:
+            flash('給与にはマイナスの値は入力できません。')
+            return 0
