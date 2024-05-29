@@ -1,9 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
-<form action="/input">
+
+<form action="/output" method="post">  <!-- 計算するボタンを押せば、outputに遷移する -->
+    <div class="form-group">
     <p>給与</p>
-    <input type="number" name="salary">
-    <p><input type="submit" value="送信する"</p>
+    <input type="number" class="form-control" id="InputTitle" name="salary">
+    </div>
+
+    <button type="submit" class="btn btn-primary">計算する</button>
 </form>
 
 {% endblock %}
