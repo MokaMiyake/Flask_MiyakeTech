@@ -18,11 +18,14 @@
                 <ul class="nav navbar-nav navbar-right">  <!--｛％　％｝で囲むことで条件文を表示できる　テキストp100-->
                     {% if not session.logged_in %}   <!--↓ログインしていないときの処理-->
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">ログイン</a>}
+                        <a class="nav-link" href="/login">ログイン</a>
                     </li>
                     {% else %}      <!--ログインしているときの処理-->
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">ログアウト</a>}
+                        <a class="nav-link" href="{{url_for('new_entry')}}">新規投稿</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">ログアウト</a>
                     </li>
                     {% endif %}
                 </ul>

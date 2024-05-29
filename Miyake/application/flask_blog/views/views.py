@@ -1,12 +1,13 @@
 from flask import request, redirect, url_for, render_template, flash, session
 from flask_blog import app
 
-@app.route('/')
-def show_entries():
-    if not session.get('logged_in'):
-        return redirect('/login') #ログインしていない場合には、ログイン画面に自動で遷移する
-        #return redirect(url_for('login')) #自動でリンクを作成（ｐ114）
-    return render_template('entries/index.html')                     
+# ↓の部分：entries.pyに移した
+# @app.route('/')
+# def show_entries():
+#     if not session.get('logged_in'):
+#         return redirect('/login') #ログインしていない場合には、ログイン画面に自動で遷移する
+#         #return redirect(url_for('login')) #自動でリンクを作成（ｐ114）
+#     return render_template('entries/index.html')                     
 
 @app.route('/login',methods=['GET','POST'])
 def login():
