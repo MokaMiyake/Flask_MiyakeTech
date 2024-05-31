@@ -4,11 +4,11 @@
 <form action="{{ url_for('result') }}" method=post>
     <div class="form-group">
         <label for="InputTitle">祝日　日付</label>
-        <input type="date" class="form-control" id="InputTitle" name=holiday>
+        <input type="date" class="form-control" id="InputTitle" name="holi_date">
     </div>
     <div class="form-group">
         <label for="InputTitle">祝日　テキスト</label>
-        <input type="text" class="form-control" id="InputTitle" name=holiday_text>
+        <input type="text" class="form-control" id="InputTitle" name="holi_text">
     </div>
     
     <div class="btn-group">
@@ -18,7 +18,7 @@
         <button type="submit" class="btn btn-danger" name="button" value="delete" style="margin-left: 10px;">削除</button>
     </div>
 </form>
-<form action="{{ url_for('list_view') }}" method=post>
+<form action="{{ url_for('list_view') }}" method="get">
     <div class="btn-group" style="margin-top: 5%;">
         <button type="submit" class="btn btn-secondary">一覧出力</button>
     </div>
