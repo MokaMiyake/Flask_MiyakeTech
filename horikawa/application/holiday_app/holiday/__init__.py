@@ -1,0 +1,1 @@
+# Flask appの初期化を行い、Flask appオブジェクトの実態を持つ
