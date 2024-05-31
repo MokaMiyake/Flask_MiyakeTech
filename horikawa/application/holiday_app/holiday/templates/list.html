@@ -1,1 +1,27 @@
-<!-- 入力画面 HTML -->
+<!-- 一覧画面 HTML -->
+{% extends "layout.html" %}
+{% block body %}
+<table class="table">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">祝日</th>
+        <th scope="col">テキスト</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.holi_date }}</td>
+            <td>{{ entry.holi_text }}</td>
+        </tr>
+        {% else %}
+        登録された祝日はありません
+        {% endfor %}
+    </tbody>
+  </table>
+<form action="{{ url_for('show_input') }}">
+    <div class="btn-group" style="margin-top: 5%;">
+        <button type="submit" class="btn btn-primary">戻る</button>
+    </div>
+</form>
+{% endblock %}
