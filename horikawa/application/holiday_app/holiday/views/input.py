@@ -32,8 +32,6 @@ def delete(date):
     if not checkDate(date):
         flash("祝日マスタが登録されていません")
         pass
-
-    
     
     holiday = Holiday.query.get(date)
     text = holiday.holi_text
