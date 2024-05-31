@@ -5,10 +5,12 @@ from holiday.models.mst_holiday import Holiday
 from holiday import db
 from .input import insert_update,delete
 
-# 最初のページ
+# 最初のページ list.htmlに指定
 @app.route("/")
 def show_input():
-    return render_template('input.html')
+    # return render_template('input.html')
+    entries = Holiday.query.order_by(Holiday.holi_date).all()
+    return render_template("list.html",entries=entries)
 
 @app.route('/result', methods=['GET', 'POST'])
 def result():
