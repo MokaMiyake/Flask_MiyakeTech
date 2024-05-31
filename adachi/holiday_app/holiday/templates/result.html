@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if status == 0 %}
+    <p>{{ holi_date }}（{{ holi_text }}）が登録されました。</p>
+{% elif status == 1 %}
+    <p>{{ holi_date }}（{{ holi_text }}）が更新されました。</p>
+{% else %}
+<p>{{ holi_date }}（{{ holi_text }}）が削除されました。</p>
+{% endif %}
+    <!-- 送信 -->
+    <form action="{{ url_for('show_holiday') }}" method="get">
+        <button type="submit" class="btn btn-primary">戻る</button>
+    </form>
+
+{% endblock %}

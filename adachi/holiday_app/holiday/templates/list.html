@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+<ul class="list-group list-group-flush">
+
+    <table class="table">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col">祝日</th>
+            <th scope="col">テキスト</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for holiday in holiday %}
+            <tr>
+                <td>{{ holiday.holi_date }}</td>
+                <td>{{ holiday.holi_text }}</td>
+            </tr>
+            {% else %}
+            登録された祝日はありません
+            {% endfor %}
+        </tbody>
+      </table>
+
+      <form action="{{ url_for('show_holiday') }}">
+        <div class="btn-group" style="margin-top: 5%;">
+            <button type="submit" class="btn btn-primary">戻る</button>
+        </div>
+    </form>      
+{% endblock %}
