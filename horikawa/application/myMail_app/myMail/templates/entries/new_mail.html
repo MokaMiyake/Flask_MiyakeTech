@@ -1,0 +1,65 @@
+<!-- モーダル遷移画面 -->
+<!-- 新規メール作成画面 -->
+
+<!-- Modal -->
+<style>
+    .fix-btn{
+        position:fixed;
+        z-index:1;
+        background:white;
+        width:65px;
+        border-radius: 50%;
+        text-decoration:none;
+        font-size:14px;
+        text-align:center;
+        color:#333;
+        padding:9px 0;
+        right:10%;
+        bottom:20px;
+        box-shadow:1px 1px 5px #aaa;
+        font-size: 30px;
+    }
+
+    .input-area{
+        padding-top: 5px;
+        width: 50px;
+    }
+
+</style>
+<form action="{{ url_for('sent_mail') }}" method="post" class="add-entry">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">新規メッセージ</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" style="display: flex;">
+                        <labe for="InputAddress" class="input-area">宛先</labe>
+                        <input type="text" class="form-control" id="InputAddress" name="address">
+                    </div>
+                    <div class="form-group" style="display: flex;">
+                        <label for="InputTitle" class="input-area">件名</label>
+                        <input type="text" class="form-control" id="InputTitle" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputText">本文</label>
+                        <textarea class="form-control" id="InputText" name="text" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send mail</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div class="form-item" style="position: sticky;">
+    <button type="button" class="fix-btn" data-toggle="modal" data-target="#exampleModal">＋</button>
+</div>
