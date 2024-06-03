@@ -1,0 +1,24 @@
+<!-- 受信/送信メール一覧 -->
+{% extends "layout.html" %}
+{% block body %}
+
+<div>
+{% include "entries/new_mail.html" %}
+<ul class="list-group list-group-flash">
+
+    {% for entry in entries %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ entry.title }}</h5>
+            <p>To: {{ entry.address }}</p>
+            <p>From: {{ entry.from_address }}</p>
+            <a href="{{ url_for('show_entry', id=entry.id) }}" class="card-link">続きを読む</a>
+        </div>
+    </div>
+    {% else %}
+        投稿がありません
+    {% endfor %}
+</ul>
+
+</div>
+{% endblock %}

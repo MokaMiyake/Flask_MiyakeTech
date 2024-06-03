@@ -1,0 +1,15 @@
+<!-- ブログの投稿記事 詳細画面 -->
+
+{% extends "layout.html" %}
+{% block body %}
+    <h2>{{ entry.title }}</h2>
+    <h3>To: {{ entry.address }}</h3>
+    <h3>from {{ entry.from_address }}</h3>
+    <br>
+
+    {{ entry.text }}
+
+    <br><br>
+    投稿日時{{ entry.created_at }}
+
+{% endblock %}
