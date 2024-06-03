@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+{% if request.form["button"] == "insert_update" %}
+<p>{{date}}を{{text}}として登録か更新</p>
+
+{% else %}
+<p>{{date}}の{{text}}を削除</p>
+
+{% endif %}
+
+{% endblock %}

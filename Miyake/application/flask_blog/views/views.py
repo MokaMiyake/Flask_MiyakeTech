@@ -1,5 +1,6 @@
 from flask import request, redirect, url_for, render_template, flash, session
 from flask_blog import app
+from functools import wraps
 
 # ↓の部分：entries.pyに移した
 # @app.route('/')
@@ -7,7 +8,16 @@ from flask_blog import app
 #     if not session.get('logged_in'):
 #         return redirect('/login') #ログインしていない場合には、ログイン画面に自動で遷移する
 #         #return redirect(url_for('login')) #自動でリンクを作成（ｐ114）
-#     return render_template('entries/index.html')                     
+#     return render_template('entries/index.html')         
+
+def login_required(view): #テキストｐ189　デコレータを作る
+    @wraps(view)
+    def inner(*args, **kwargs):
+        if not session.get('logged_in'):
+            return redirect(url_for('login'))
+        return view(*args, **kwargs)
+    return inner
+
 
 @app.route('/login',methods=['GET','POST'])
 def login():

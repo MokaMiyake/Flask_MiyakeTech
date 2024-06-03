@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block body %}
+<p>祝日の一覧を表示</p>
+{% for holiday in holiday}
+<p>{{ holiday.holi_date}}{{holiday.holiday_text}}</p>
+{% endblock %}
