@@ -21,6 +21,7 @@ def holiday():
                 holi_text=holitext
             )
             db.session.add(holiday)
+            # 確認
             print(Holiday.query.get(holidate))
         # 更新
         else:
@@ -32,7 +33,6 @@ def holiday():
     
     # 削除
     elif request.form['button']=="dalete":
-        print( Holiday.query.get(holidate))
         if Holiday.query.get(holidate) != None:
             holiday = Holiday.query.get(holidate)
             db.session.delete(holiday)
